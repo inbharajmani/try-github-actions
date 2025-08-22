@@ -45,4 +45,4 @@ jobs:
           docker pull inbha/2048:latest
           docker stop 2048
           docker rm 2048
-          docker run -d -p 80:8080 --name 2048 inbha/2048:latest
+          docker run -d -p 8081:8080 --name 2048 inbha/2048:latest
