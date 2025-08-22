@@ -14,7 +14,9 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
         
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: app/2048:latest
