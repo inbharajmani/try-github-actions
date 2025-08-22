@@ -32,6 +32,17 @@ jobs:
   
   deploy:
     runs-on: self-hosted
+    needs: build
     steps:
-      - name: echo
-        run: echo "Deploying application..."
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Pull image and run container
+        run: |
+          docker pull inbha/2048:latest
+          docker stop 2048
+          docker rm 2048
+          docker run -d -p 80:8080 --name 2048 inbha/2048:latest
