@@ -29,3 +29,9 @@ jobs:
           context: .
           push: true
           tags: inbha/2048:latest
+  
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: echo
+        run: echo "Deploying application..."
